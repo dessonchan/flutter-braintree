@@ -22,11 +22,9 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 public class FlutterBraintreeDropIn implements FlutterPlugin, ActivityAware, MethodCallHandler, ActivityResultListener {
   private static final int DROP_IN_REQUEST_CODE = 0x1337;
-  public static final int DROP_IN_ERROR_CODE = 0x1335;
 
   private Activity activity;
   private Result activeResult;
-  private DropInClient dropInClient;
 
   /** Plugin registration. */
   @SuppressWarnings("deprecation")
@@ -99,7 +97,10 @@ public class FlutterBraintreeDropIn implements FlutterPlugin, ActivityAware, Met
         String currencyCode = (String) arg.get("currencyCode");
         String environment = (String) arg.get("environment");
         String totalPrice = (String) arg.get("totalPrice");
-        boolean billingAddressRequired = (Boolean) arg.get("billingAddressRequired");
+        boolean billingAddressRequired = false;
+        if (arg.containsKey("billingAddressRequired")) {
+          billingAddressRequired = (boolean) arg.get("billingAddressRequired");
+        }
         intent.putExtra("googlePaymentRequest", true);
         intent.putExtra("currencyCode", currencyCode);
         intent.putExtra("environment",environment);

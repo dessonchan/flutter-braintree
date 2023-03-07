@@ -1,28 +1,18 @@
 package com.example.flutter_braintree;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.braintreepayments.api.BraintreeClient;
-import com.braintreepayments.api.Card;
-import com.braintreepayments.api.CardClient;
 import com.braintreepayments.api.CardNonce;
-import com.braintreepayments.api.CardTokenizeCallback;
-import com.braintreepayments.api.GooglePayCardNonce;
 import com.braintreepayments.api.GooglePayClient;
 import com.braintreepayments.api.GooglePayListener;
 import com.braintreepayments.api.GooglePayRequest;
-import com.braintreepayments.api.PayPalAccountNonce;
-import com.braintreepayments.api.PayPalCheckoutRequest;
-import com.braintreepayments.api.PayPalClient;
-import com.braintreepayments.api.PayPalListener;
-import com.braintreepayments.api.PayPalPaymentIntent;
-import com.braintreepayments.api.PayPalVaultRequest;
 import com.braintreepayments.api.PaymentMethodNonce;
 import com.braintreepayments.api.ThreeDSecureClient;
 import com.braintreepayments.api.ThreeDSecureListener;
@@ -32,7 +22,6 @@ import com.braintreepayments.api.ThreeDSecureResultCallback;
 import com.braintreepayments.api.UserCanceledException;
 import com.google.android.gms.wallet.TransactionInfo;
 import com.google.android.gms.wallet.WalletConstants;
-
 
 import java.util.HashMap;
 
@@ -82,22 +71,22 @@ public class FlutterBraintreeCustom extends AppCompatActivity implements ThreeDS
     }
 
     protected void tokenizeCreditCard() {
-        Intent intent = getIntent();
-        Card card = new Card();
-        card.setNumber(intent.getStringExtra("cardNumber"));
-        card.setExpirationMonth(intent.getStringExtra("expirationMonth"));
-        card.setExpirationYear(intent.getStringExtra("expirationYear"));
-        card.setCvv(intent.getStringExtra("cvv"));
-        card.setShouldValidate(false);
-        card.setCardholderName(intent.getStringExtra("cardholderName"));
-
-        CardClient cardClient = new CardClient(new BraintreeClient(this, intent.getStringExtra("authorization")));
-        cardClient.tokenize(card, new CardTokenizeCallback() {
-            @Override
-            public void onResult(@Nullable com.braintreepayments.api.CardNonce cardNonce, @Nullable Exception error) {
-
-            }
-        });
+//        Intent intent = getIntent();
+//        Card card = new Card();
+//        card.setNumber(intent.getStringExtra("cardNumber"));
+//        card.setExpirationMonth(intent.getStringExtra("expirationMonth"));
+//        card.setExpirationYear(intent.getStringExtra("expirationYear"));
+//        card.setCvv(intent.getStringExtra("cvv"));
+//        card.setShouldValidate(false);
+//        card.setCardholderName(intent.getStringExtra("cardholderName"));
+//
+//        CardClient cardClient = new CardClient(new BraintreeClient(this, intent.getStringExtra("authorization")));
+//        cardClient.tokenize(card, new CardTokenizeCallback() {
+//            @Override
+//            public void onResult(@Nullable com.braintreepayments.api.CardNonce cardNonce, @Nullable Exception error) {
+//
+//            }
+//        });
     }
 
     protected void requestPaypalNonce() {
